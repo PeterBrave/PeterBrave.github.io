@@ -1,0 +1,126 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>买卖股票含手续费 · Peter&#x27;s 知识基地</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**Leetcode 714 原题链接：[买卖股票的最佳时机含冷冻期](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee&gt;)**"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="买卖股票含手续费 · Peter&#x27;s 知识基地"/><meta property="og:type" content="website"/><meta property="og:url" content="https://PeterBrave.github.io/"/><meta property="og:description" content="**Leetcode 714 原题链接：[买卖股票的最佳时机含冷冻期](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee&gt;)**"/><meta property="og:image" content="https://PeterBrave.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://PeterBrave.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://PeterBrave.github.io/blog/atom.xml" title="Peter&#x27;s 知识基地 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://PeterBrave.github.io/blog/feed.xml" title="Peter&#x27;s 知识基地 Blog RSS Feed"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Peter&#x27;s 知识基地"/><h2 class="headerTitleWithLogo">Peter&#x27;s 知识基地</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/os1" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/stock1" target="_self">Leetcode</a></li><li class=""><a href="/about" target="_self">About</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Ask me something" title="Ask me something"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>股票系列</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">股票系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/stock1">买卖一次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock2">买卖多次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock3">买卖股票含冷冻期</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/stock4">买卖股票含手续费</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">链表系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/listNode1">链表-两数相加I</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">买卖股票含手续费</h1></header><article><div><span><p><strong>Leetcode 714 原题链接：<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee&gt;">买卖股票的最佳时机含冷冻期</a></strong></p>
+<h3><a class="anchor" aria-hidden="true" id="题目描述"></a><a href="#题目描述" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>题目描述</h3>
+<p>给定一个整数数组 <code>prices</code>，其中第 <code>i</code> 个元素代表了第 <code>i</code> 天的股票价格 ；非负整数 <code>fee</code> 代表了交易股票的手续费用。</p>
+<p>你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
+<p>返回获得利润的最大值。</p>
+<p><strong>注意：</strong> 这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
+<p><strong>示例1：</strong></p>
+<blockquote>
+<p><strong>输入：</strong> prices = [1, 3, 2, 8, 4, 9], fee = 2</p>
+<p><strong>输出：</strong> 8</p>
+<p><strong>解释：</strong>  能够达到的最大利润:</p>
+<p>在此处买入 prices[0] = 1</p>
+<p>在此处卖出 prices[3] = 8</p>
+<p>在此处买入 prices[4] = 4</p>
+<p>在此处卖出 prices[5] = 9</p>
+<p>总利润: ((8 - 1) - 2) + ((9 - 4) - 2) = 8.</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="解题思路"></a><a href="#解题思路" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>解题思路</h3>
+<h4><a class="anchor" aria-hidden="true" id="第一步：状态定义"></a><a href="#第一步：状态定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>第一步：状态定义</h4>
+<p><code>dp[i][j]</code> 表示 <code>[0, i]</code> 区间内下标为 <code>i</code> 这一天 <strong>最终</strong> 状态为 <code>j</code> 时的最大收益。</p>
+<p>这里 <code>j</code> 取三个值：</p>
+<ul>
+<li><code>0</code> 表示不持股</li>
+<li><code>1</code> 表示持股</li>
+</ul>
+<h4><a class="anchor" aria-hidden="true" id="第二步：状态转移方程"></a><a href="#第二步：状态转移方程" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>第二步：状态转移方程</h4>
+<p>此处的状态转移关系比上篇文章的要简单，参考上篇文章的既可。</p>
+<h4><a class="anchor" aria-hidden="true" id="第三步：初始化变量"></a><a href="#第三步：初始化变量" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>第三步：初始化变量</h4>
+<p><code>dp[0][0] = 0</code> 不持股，第0天的收益就是 <code>0</code></p>
+<p><code>dp[0][1] = -prices[0]-fee</code> 持股，第0天的收益就是负的 <code>prices[0]</code>，并且统一在买入时扣去手续费</p>
+<h4><a class="anchor" aria-hidden="true" id="第四步：考虑输出"></a><a href="#第四步：考虑输出" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>第四步：考虑输出</h4>
+<p>最大值肯定是最后一天不持股时的值，即 <code>dp[prices.length-1][0]</code></p>
+<h3><a class="anchor" aria-hidden="true" id="代码编写"></a><a href="#代码编写" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码编写</h3>
+<pre><code class="hljs css language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] prices, <span class="hljs-keyword">int</span> fee)</span> </span>{
+        <span class="hljs-keyword">if</span> (prices == <span class="hljs-keyword">null</span> || prices.length&lt;<span class="hljs-number">2</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-keyword">int</span> n = prices.length;
+        <span class="hljs-keyword">int</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n][<span class="hljs-number">2</span>];
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>]-fee;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;n; i++) {
+            dp[i][<span class="hljs-number">0</span>] = Math.max(dp[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>], dp[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] + prices[i]);
+            dp[i][<span class="hljs-number">1</span>] = Math.max(dp[i-<span class="hljs-number">1</span>][<span class="hljs-number">1</span>], dp[i-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>] - prices[i] - fee);
+        }
+        <span class="hljs-keyword">return</span> dp[n-<span class="hljs-number">1</span>][<span class="hljs-number">0</span>];
+    }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2020-8-10</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/stock3"><span class="arrow-prev">← </span><span>买卖股票含冷冻期</span></a><a class="docs-next button" href="/docs/listNode1"><span>链表-两数相加I</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Peter&#x27;s 知识基地" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/os1.html">文档</a><a href="/docs/en/leetcode1.html">Leetcode</a><a href="/about">About</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/PeterBrave">GitHub</a><a class="github-button" href="https://github.com/PeterBrave/PeterBrave.github.io" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 PeterBrave All right reserved</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'my-api-key',
+                indexName: 'my-index-name',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
