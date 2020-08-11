@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>分割等和子集 · Peter&#x27;s 知识基地</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**Leetcode 416 原题链接：[分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)**"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="分割等和子集 · Peter&#x27;s 知识基地"/><meta property="og:type" content="website"/><meta property="og:url" content="https://PeterBrave.github.io/"/><meta property="og:description" content="**Leetcode 416 原题链接：[分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum/)**"/><meta property="og:image" content="https://PeterBrave.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://PeterBrave.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://PeterBrave.github.io/blog/atom.xml" title="Peter&#x27;s 知识基地 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://PeterBrave.github.io/blog/feed.xml" title="Peter&#x27;s 知识基地 Blog RSS Feed"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Peter&#x27;s 知识基地"/><h2 class="headerTitleWithLogo">Peter&#x27;s 知识基地</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/os1" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/stock1" target="_self">Leetcode</a></li><li class=""><a href="/about" target="_self">About</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Ask me something" title="Ask me something"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>背包系列</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">股票系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/stock1">买卖一次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock2">买卖多次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock3">买卖股票含冷冻期</a></li><li class="navListItem"><a class="navItem" href="/docs/stock4">买卖股票含手续费</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">链表系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/listNode1">链表-两数相加</a></li><li class="navListItem"><a class="navItem" href="/docs/listNode2">链表-两数相加II</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">背包系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem navListItemActive"><a class="navItem" href="/docs/package1">分割等和子集</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">分割等和子集</h1></header><article><div><span><p><strong>Leetcode 416 原题链接：<a href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">分割等和子集</a></strong></p>
+<h2><a class="anchor" aria-hidden="true" id="题目描述"></a><a href="#题目描述" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>题目描述</h2>
+<p>给定一个 <strong>只包含正整数的非空数组</strong> 。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
+<p><strong>注意:</strong></p>
+<p>每个数组中的元素不会超过 100
+数组的大小不会超过 200</p>
+<p><strong>示例 1:</strong></p>
+<blockquote>
+<p>输入: [1, 5, 11, 5]</p>
+<p>输出: true</p>
+<p>解释: 数组可以分割成 [1, 5, 5] 和 [11].</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="状态定义"></a><a href="#状态定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态定义</h2>
+<p>定义 <code>dp[i][j]</code> 表示 <code>[0, i]</code> 范围内，数组中存在一些数，使得可以取到一些数的和为 <code>j</code></p>
+<p>如果取到则为 <code>true</code> 否则为 <code>false</code></p>
+<h2><a class="anchor" aria-hidden="true" id="状态转移方程"></a><a href="#状态转移方程" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态转移方程</h2>
+<p><code>dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i]]</code></p>
+<p>解释：如果 <code>[0, i-1]</code> 范围内已经存在累加和为 <code>j</code> 的一些数了，那么 <code>dp[i][j]</code> 肯定直接为 <code>true</code> 了啊。</p>
+<p>或者在 <code>[0, i-1]</code> 范围内存在一些数累加和为 <code>j - nums[i]</code> ，那么当数组范围变成 <code>[0, i]</code> 时，也存在一些数累加和为 <code>true</code>。</p>
+<p>总结约束方程：</p>
+<p>如果 <code>nums[i] == j</code> 其对应的 <code>dp[i][j]</code> 应当为 <code>true</code></p>
+<p>如果 <code>nums[i] &gt; j</code> 则其对应的 <code>dp[i][j]</code> 应为 <code>dp[i-1][j]</code></p>
+<p>如果 <code>nums[i] &lt; j</code> 则其对应的 <code>dp[i][j]</code> 应为 <code>dp[i - 1][j] || dp[i - 1][j - nums[i]]</code></p>
+<h2><a class="anchor" aria-hidden="true" id="状态初始化变量"></a><a href="#状态初始化变量" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>状态初始化变量</h2>
+<p>根据状态转移方程可知，必然对 <code>dp[0][j]</code> 的数据进行初始化，此处 <code>j</code> 的值应当存为 <code>nums[0]</code> 最为合适。</p>
+<p>特判：如果当数组的和 <code>sum</code> 为奇数，那么直接返回 <code>false</code> 既可。</p>
+<h2><a class="anchor" aria-hidden="true" id="最终需要求得的状态"></a><a href="#最终需要求得的状态" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>最终需要求得的状态</h2>
+<p>最终我们需要求的是 <code>dp[n - 1][target]</code> 的值，其中 <code>taget = sum / 2</code></p>
+<h2><a class="anchor" aria-hidden="true" id="代码"></a><a href="#代码" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码</h2>
+<pre><code class="hljs css language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">canPartition</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+        <span class="hljs-keyword">if</span> (nums == <span class="hljs-keyword">null</span> || nums.length &lt; <span class="hljs-number">2</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-keyword">int</span> n = nums.length;
+        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num : nums) {
+            sum += num;
+        }
+        <span class="hljs-keyword">if</span> ((sum &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+        <span class="hljs-keyword">int</span> target = sum / <span class="hljs-number">2</span>;
+        
+        <span class="hljs-keyword">boolean</span>[][] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[n][target + <span class="hljs-number">1</span>];
+
+        dp[<span class="hljs-number">0</span>][nums[<span class="hljs-number">0</span>]] = <span class="hljs-keyword">true</span>;
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++) {
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;= target; j++) {
+                <span class="hljs-keyword">if</span> (nums[i] == j) {
+                    dp[i][j] = <span class="hljs-keyword">true</span>;
+                } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[i] &lt; j) {
+                    dp[i][j] = dp[i - <span class="hljs-number">1</span>][j] || dp[i - <span class="hljs-number">1</span>][j - nums[i]];
+                } <span class="hljs-keyword">else</span> {
+                    dp[i][j] = dp[i - <span class="hljs-number">1</span>][j];
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> dp[n - <span class="hljs-number">1</span>][target];
+    }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2020-8-11</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/listNode2"><span class="arrow-prev">← </span><span>链表-两数相加II</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#题目描述">题目描述</a></li><li><a href="#状态定义">状态定义</a></li><li><a href="#状态转移方程">状态转移方程</a></li><li><a href="#状态初始化变量">状态初始化变量</a></li><li><a href="#最终需要求得的状态">最终需要求得的状态</a></li><li><a href="#代码">代码</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Peter&#x27;s 知识基地" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/os1.html">文档</a><a href="/docs/en/leetcode1.html">Leetcode</a><a href="/about">About</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/PeterBrave">GitHub</a><a class="github-button" href="https://github.com/PeterBrave/PeterBrave.github.io" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 PeterBrave All right reserved</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'my-api-key',
+                indexName: 'my-index-name',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>

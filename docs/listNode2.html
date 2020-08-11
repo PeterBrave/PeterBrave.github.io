@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>链表-两数相加II · Peter&#x27;s 知识基地</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**Leetcode 445 原题链接：[两数相加II](https://leetcode-cn.com/problems/add-two-numbers-ii/)**"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="链表-两数相加II · Peter&#x27;s 知识基地"/><meta property="og:type" content="website"/><meta property="og:url" content="https://PeterBrave.github.io/"/><meta property="og:description" content="**Leetcode 445 原题链接：[两数相加II](https://leetcode-cn.com/problems/add-two-numbers-ii/)**"/><meta property="og:image" content="https://PeterBrave.github.io/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://PeterBrave.github.io/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css"/><link rel="alternate" type="application/atom+xml" href="https://PeterBrave.github.io/blog/atom.xml" title="Peter&#x27;s 知识基地 Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://PeterBrave.github.io/blog/feed.xml" title="Peter&#x27;s 知识基地 Blog RSS Feed"/><link rel="stylesheet" href="/css/code-block-buttons.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/code-block-buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="Peter&#x27;s 知识基地"/><h2 class="headerTitleWithLogo">Peter&#x27;s 知识基地</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/os1" target="_self">文档</a></li><li class="siteNavGroupActive"><a href="/docs/stock1" target="_self">Leetcode</a></li><li class=""><a href="/about" target="_self">About</a></li><li class=""><a href="/blog/" target="_self">Blog</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Ask me something" title="Ask me something"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>链表系列</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">股票系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/stock1">买卖一次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock2">买卖多次股票</a></li><li class="navListItem"><a class="navItem" href="/docs/stock3">买卖股票含冷冻期</a></li><li class="navListItem"><a class="navItem" href="/docs/stock4">买卖股票含手续费</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">链表系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/listNode1">链表-两数相加</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/listNode2">链表-两数相加II</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle collapsible">背包系列<span class="arrow"><svg width="24" height="24" viewBox="0 0 24 24"><path fill="#565656" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></span></h3><ul class="hide"><li class="navListItem"><a class="navItem" href="/docs/package1">分割等和子集</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">链表-两数相加II</h1></header><article><div><span><p><strong>Leetcode 445 原题链接：<a href="https://leetcode-cn.com/problems/add-two-numbers-ii/">两数相加II</a></strong></p>
+<h2><a class="anchor" aria-hidden="true" id="题目描述"></a><a href="#题目描述" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>题目描述</h2>
+<p>给你两个 <strong>非空</strong> 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。</p>
+<p>你可以假设除了数字 <code>0</code> 之外，这两个数字都不会以零开头。</p>
+<p><strong>示例：</strong></p>
+<blockquote>
+<p>输入：(7 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p>
+<p>输出：7 -&gt; 8 -&gt; 0 -&gt; 7</p>
+<p>原因：7243 + 564 = 7807</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="分析"></a><a href="#分析" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>分析</h2>
+<p>本题的链表是高位在前，低位在后，与第一题刚好相反。注意需要考虑进位。</p>
+<p>实际上，我们在计算两个数加法的时候，应当遵循低位在前高位在后的做法，但是是高位在前，低位在后，而且这是一个链表。</p>
+<p>两个办法，一、反转两个链表，然后再直接调用【两数相加】的解题思路；二、利用栈的先入后出思想，先把两个链表压入栈，再弹出，依然是套用【两数相加】的算法。</p>
+<p>可以看出，本题我们需要处理的就是反转这个操作，具体如何反转有不同的实现思路。</p>
+<p><strong>最后在求结果时，需要进行反转处理！这个要特别注意！</strong></p>
+<h2><a class="anchor" aria-hidden="true" id="代码"></a><a href="#代码" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>代码</h2>
+<p><code>ListNode</code> 的定义</p>
+<pre><code class="hljs css language-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>{
+    <span class="hljs-keyword">int</span> val;
+    ListNode next;
+    ListNode(<span class="hljs-keyword">int</span> val) {
+        <span class="hljs-keyword">this</span>.val = val;
+    }
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="解答代码"></a><a href="#解答代码" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>解答代码</h2>
+<pre><code class="hljs css language-java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+    <span class="hljs-keyword">if</span> (l1 == <span class="hljs-keyword">null</span> &amp;&amp; l2 == <span class="hljs-keyword">null</span>) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+    Stack&lt;ListNode&gt; stack1 = <span class="hljs-keyword">new</span> Stack();
+    Stack&lt;ListNode&gt; stack2 = <span class="hljs-keyword">new</span> Stack();
+    
+    <span class="hljs-keyword">while</span> (l1 != <span class="hljs-keyword">null</span>) {
+        stack1.push(l1);
+        l1 = l1.next;
+    }
+    <span class="hljs-keyword">while</span> (l2 != <span class="hljs-keyword">null</span>) {
+        stack2.push(l2);
+        l2 = l2.next;
+    }
+    
+    ListNode head = <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (!stack1.isEmpty() || !stack2.isEmpty() || carry &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">int</span> a = stack1.isEmpty() ? <span class="hljs-number">0</span> : stack1.pop().val;
+        <span class="hljs-keyword">int</span> b = stack2.isEmpty() ? <span class="hljs-number">0</span> : stack2.pop().val;
+        ListNode tmp = <span class="hljs-keyword">new</span> ListNode((a + b + carry) % <span class="hljs-number">10</span>);
+        tmp.next = head;
+        head = tmp;
+        carry = (a + b + carry) / <span class="hljs-number">10</span>;
+    }
+    <span class="hljs-keyword">return</span> head;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="注意"></a><a href="#注意" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>注意</h2>
+<p>需要注意，这个链表是反着来的，每次 <code>head</code> 都保持在头部。</p>
+<p>首先 <code>head = null;</code></p>
+<p>接着每次更新时 <code>tmp.next = head; head = tmp;</code></p>
+<p>最后直接返回 <code>head</code> 即可。</p>
+<p><strong>小trick：</strong>可以直接把最后 <code>carry</code> 溢出的判断放到 <code>while</code> 循环中去，这样不需要额外再单独处理了，秒啊！</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2020-8-11</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/listNode1"><span class="arrow-prev">← </span><span>链表-两数相加</span></a><a class="docs-next button" href="/docs/package1"><span>分割等和子集</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#题目描述">题目描述</a></li><li><a href="#分析">分析</a></li><li><a href="#代码">代码</a></li><li><a href="#解答代码">解答代码</a></li><li><a href="#注意">注意</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="Peter&#x27;s 知识基地" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/en/os1.html">文档</a><a href="/docs/en/leetcode1.html">Leetcode</a><a href="/about">About</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/" target="_blank" rel="noreferrer noopener">Stack Overflow</a><a href="https://discordapp.com/">Project Chat</a><a href="https://twitter.com/" target="_blank" rel="noreferrer noopener">Twitter</a></div><div><h5>More</h5><a href="/blog">Blog</a><a href="https://github.com/PeterBrave">GitHub</a><a class="github-button" href="https://github.com/PeterBrave/PeterBrave.github.io" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2020 PeterBrave All right reserved</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: 'my-api-key',
+                indexName: 'my-index-name',
+                inputSelector: '#search_input_react',
+                algoliaOptions: {}
+              });
+            </script></body></html>
